@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Arreglos {
     public static void main(String[] args) {
@@ -35,37 +36,34 @@ public class Arreglos {
         alumnos[26] = "Viveros Tellez Kevin";
 
           System.out.println("escribe true si asistio /false si faltó");
+          int asistencias = 0;
+          int faltas = 0;
+          ArrayList <String> faltaron = new ArrayList<String>();
 
         for (int i = 0; i < alumnos.length; i++) {
 
             System.out.println("Asistió? " + alumnos[i]);
-            asistencia[i] = Boolean.parseBoolean(consola.nextLine());
-        }
-         //reporte de asistencia
-         int asistencias = 0;
-         int faltas = 0;
-
-         for(int i=asistencia.length; i>0; i--){
-            if(asistencia[i-1]){
+            boolean respuesta = Boolean.parseBoolean(consola.nextLine());
+            if (respuesta) {
                 asistencias++;
             }
             else{
-                faltas++;
-            }
-
-         }
-
+                faltas++;};
+                faltaron.add(alumnos[i]);
+        }
+        consola.close();
 
          //cuantos asistieron
-         //cuantos faltaron
          System.out.println("El numero de personas que asistieron son: " + asistencias);
+
+         //cuantos faltaron
          System.out.println("El numero de personas que faltaron son: " + faltas);
 
          //quienes faltaron
-         for(int i=0; i<asistencia.length; i++){
-            if(!asistencia[i]){
-                System.out.println(alumnos[i]);
-            }
-        }
+         System.out.println("Los alumnos que faltaron fueron: ");
+         for(int i=0; i<faltaron.size(); i++){
+            System.out.println(faltaron.get(i));
+         }
+        
     }
 }
